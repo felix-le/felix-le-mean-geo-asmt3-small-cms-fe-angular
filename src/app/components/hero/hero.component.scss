@@ -1,0 +1,75 @@
+.module-hero {
+  align-content: center;
+  display: grid;
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+  grid-template-columns: 1fr;
+  grid-template-rows: 350px;
+  justify-content: center;
+
+  picture {
+    grid-area: 1 / 1 / 2 / 2;
+
+    img {
+      display: grid;
+      height: 100%;
+      min-width: 350px;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  .color-overlay {
+    background: black;
+    background: linear-gradient(
+      60deg,
+      rgba(0, 0, 0, 0.8) 30%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    display: grid;
+    grid-area: 1 / 1 / 2 / 2;
+    max-width: 100%;
+  }
+
+  .content {
+    align-items: center;
+    display: grid;
+    grid-area: 1 / 1 / 2 / 2;
+    margin: 0 1.5em;
+
+    .content-wrapper {
+      color: white;
+
+      h1 {
+        font-size: calc(10pt + 0.15vw);
+        letter-spacing: 0.05em;
+        font-weight: bolder;
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      p {
+        font-size: calc(10pt + 0.15vw);
+        margin: 0.5em 0 1.5em;
+      }
+
+      button {
+        background-color: transparent;
+        border: 1px solid white;
+        border-radius: 0.5em;
+        color: white;
+        cursor: pointer;
+        font-size: calc(8pt + 0.15vw);
+        font-weight: bold;
+        padding: calc(0.5em + 0.08vw);
+        text-align: center;
+        text-transform: uppercase;
+
+        &:link,
+        &:visited {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
