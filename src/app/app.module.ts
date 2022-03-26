@@ -15,6 +15,7 @@ import { ProjectApiService } from './services/projectApi.service';
 
 import { AboutComponent } from './components/about/about.component';
 import { ProjectsComponent } from './components/projects/projects.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
     NavbarComponent,
     AboutComponent,
     ProjectsComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

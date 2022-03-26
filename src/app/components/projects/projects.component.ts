@@ -12,7 +12,6 @@ export class ProjectsComponent implements OnInit {
   ngOnInit() {
     this._projectApiService.getProjects().subscribe((res) => {
       this.lstProjects = res.data;
-      console.log('🚀 ~ =====', this.lstProjects);
     });
   }
 }

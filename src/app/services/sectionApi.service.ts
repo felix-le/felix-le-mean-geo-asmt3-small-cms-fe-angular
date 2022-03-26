@@ -7,6 +7,6 @@ export class SectionApiService {
   constructor(private httpclient: HttpClient) {}
 
   getSections(): Observable<any> {
-    return this.httpclient.get('http://localhost:5500/projects');
+    return this.httpclient.get('http://localhost:5500/sections');
   }
 }

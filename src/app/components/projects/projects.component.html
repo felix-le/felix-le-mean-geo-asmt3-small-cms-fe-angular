@@ -2,11 +2,7 @@
   <div class="project-wrapper">
     <div class="container">
       <div class="row">
-        <div
-          class="card"
-          style="width: 18rem"
-          *ngFor="let project of lstProjects"
-        >
+        <div class="card col-4" *ngFor="let project of lstProjects">
           <img
             class="card-img-top"
             src="{{ project['img'] }}"
@@ -16,7 +12,10 @@
             <h3 class="card-title">{{ project["name"] }}</h3>
             <h5>{{ project["date"] }}</h5>
             <h6>{{ project["status"] }}</h6>
-            <p class="card-text">
+            <p
+              class="card-text text-truncate text-wrap"
+              style="max-height: 100px"
+            >
               {{ project["description"] }}
             </p>
           </div>
