@@ -1,0 +1,27 @@
+<section>
+  <div class="project-wrapper">
+    <div class="container">
+      <div class="row">
+        <div
+          class="card"
+          style="width: 18rem"
+          *ngFor="let project of lstProjects"
+        >
+          <img
+            class="card-img-top"
+            src="{{ project['img'] }}"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h3 class="card-title">{{ project["name"] }}</h3>
+            <h5>{{ project["date"] }}</h5>
+            <h6>{{ project["status"] }}</h6>
+            <p class="card-text">
+              {{ project["description"] }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

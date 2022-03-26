@@ -14,10 +14,6 @@ export class AboutComponent implements OnInit {
   ngOnInit() {
     this._sectionApiService.getSections().subscribe((res) => {
       this.lstSections = res.data;
-      console.log(
-        '🚀 ~ file: about.component.ts ~ line 11 ~ AboutComponent ~ lstSections',
-        this.lstSections
-      );
     });
   }
 }
