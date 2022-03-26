@@ -32,8 +32,12 @@ export class NavbarComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-  onSubmit(f: any) {
-    console.log(this.user);
+  onSubmit() {
+    console.log('submit');
+    console.log(
+      "🚀 ~ file: navbar.component.ts ~ line 38 ~ NavbarComponent ~ onSubmit ~ document.querySelector('#heroForm')",
+      document.querySelector('#heroForm')
+    );
     // const url = 'http://localhost:8888/friends/addnew';
     // this.httpClient.post(url, f.value)
     //   .subscribe((result) => {

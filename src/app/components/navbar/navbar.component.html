@@ -61,7 +61,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <form #heroForm="ngForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="email">email</label>
         <div class="input-group">
@@ -70,7 +70,8 @@
             name="email"
             id="email"
             class="form-control"
-            ngModel
+            [(ngModel)]="user.email"
+            #name="ngModel"
           />
         </div>
       </div>
@@ -85,7 +86,9 @@
       Cancel
     </button>
     <div class="border text-center">
-      <button data-dismiss="modal" class="btn btn-info">Submit</button>
+      <button data-dismiss="modal" class="btn btn-info" type="submit">
+        Submit
+      </button>
     </div>
   </div>
 </ng-template>
