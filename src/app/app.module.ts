@@ -18,6 +18,7 @@ import { AboutComponent } from './components/about/about.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { FooterComponent } from './components/footer/footer.component';
 
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { FooterComponent } from './components/footer/footer.component';
     NgbAlertModule,
     HttpClientModule,
     NgbModule,
+    FormsModule,
   ],
   providers: [SectionApiService, ProjectApiService],
   bootstrap: [AppComponent],
