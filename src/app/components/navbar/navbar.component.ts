@@ -8,7 +8,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class NavbarComponent implements OnInit {
   closeResult = '';
   constructor(private modalService: NgbModal) {}
-
+  user = {} as any;
   ngOnInit(): void {}
   open(content: any) {
     this.modalService
@@ -31,5 +31,14 @@ export class NavbarComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+  onSubmit(f: any) {
+    console.log(this.user);
+    // const url = 'http://localhost:8888/friends/addnew';
+    // this.httpClient.post(url, f.value)
+    //   .subscribe((result) => {
+    //     this.ngOnInit(); //reload the table
+    //   });
+    // this.modalService.dismissAll(); //dismiss the modal
   }
 }
