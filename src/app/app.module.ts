@@ -8,11 +8,18 @@ import {
   NgbPaginationModule,
   NgbAlertModule,
 } from '@ng-bootstrap/ng-bootstrap';
-
+import { HttpClientModule } from '@angular/common/http';
+import { SectionApiService } from './services/sectionApi.service';
+import { AboutComponent } from './components/about/about.component';
 @NgModule({
-  declarations: [AppComponent, HeroComponent, NavbarComponent],
-  imports: [BrowserModule, NgbPaginationModule, NgbAlertModule],
-  providers: [],
+  declarations: [AppComponent, HeroComponent, NavbarComponent, AboutComponent],
+  imports: [
+    BrowserModule,
+    NgbPaginationModule,
+    NgbAlertModule,
+    HttpClientModule,
+  ],
+  providers: [SectionApiService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
