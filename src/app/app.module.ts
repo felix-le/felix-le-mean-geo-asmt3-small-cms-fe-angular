@@ -7,6 +7,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import {
   NgbPaginationModule,
   NgbAlertModule,
+  NgbModule,
 } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 // Api providers
@@ -31,6 +32,7 @@ import { FooterComponent } from './components/footer/footer.component';
     NgbPaginationModule,
     NgbAlertModule,
     HttpClientModule,
+    NgbModule,
   ],
   providers: [SectionApiService, ProjectApiService],
   bootstrap: [AppComponent],
