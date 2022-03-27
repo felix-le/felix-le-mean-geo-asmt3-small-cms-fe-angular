@@ -11,7 +11,7 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Api providers
 import { SectionApiService } from './services/sectionApi.service';
@@ -36,6 +36,7 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     NgbModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     SectionApiService,

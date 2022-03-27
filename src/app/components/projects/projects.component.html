@@ -25,7 +25,7 @@
               class="d-flex justify-content-between"
               *ngIf="isLoggedIn() === true"
             >
-              <button class="btn btn-primary" (click)="onEditProject(project)">
+              <button class="btn btn-primary" (click)="open(content, project)">
                 Edit
               </button>
               <button class="btn btn-danger" (click)="onDeleteProject(project)">
@@ -38,3 +38,58 @@
     </div>
   </div>
 </section>
+
+<!-- Login Form  -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="editProject">Edit Project</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form
+      #editProjectForm="ngForm"
+      (ngSubmit)="onSubmitEdit(editProjectForm.value)"
+    >
+      <div class="form-group">
+        <label for="name-project">name project</label>
+        <div class="input-group">
+          <input
+            name="name-project"
+            id="name-project"
+            type="name-project"
+            class="form-control"
+            placeholder="rich.freeman@georgiancollege.ca"
+            ngModel
+          />
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-outline-dark"
+          (click)="modal.close('cancel')"
+        >
+          Cancel
+        </button>
+        <div class="border text-center">
+          <button
+            data-dismiss="modal"
+            class="btn btn-info"
+            (click)="modal.close('cancel')"
+            type="submit"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
