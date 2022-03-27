@@ -50,4 +50,12 @@ export class NavbarComponent implements OnInit {
       });
     }
   }
+  isLoggedIn() {
+    // from AuthService
+    return !!this.cookieService.get('refreshToken');
+  }
+  logOut() {
+    // from AuthService
+    this.cookieService.delete('refreshToken');
+  }
 }
