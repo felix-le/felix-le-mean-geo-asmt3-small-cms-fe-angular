@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { UserApiService } from '../../services/userApi.service';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -7,7 +10,11 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class NavbarComponent implements OnInit {
   closeResult = '';
-  constructor(private modalService: NgbModal) {}
+  constructor(
+    private modalService: NgbModal,
+    private _UserApiService: UserApiService, // private private
+    private cookieService: CookieService //   data: String, // }
+  ) {}
   user = {} as any;
   ngOnInit(): void {}
   open(content: any) {
@@ -33,13 +40,14 @@ export class NavbarComponent implements OnInit {
     }
   }
   onSubmit(data: any) {
-    console.log('data', data);
-
-    // const url = 'http://localhost:8888/friends/addnew';
-    // this.httpClient.post(url, f.value)
-    //   .subscribe((result) => {
-    //     this.ngOnInit(); //reload the table
-    //   });
-    // this.modalService.dismissAll(); //dismiss the modal
+    // Login with user data and get token
+    if (data.email && data.password) {
+      this._UserApiService.login(data).subscribe(async (res: any) => {
+        // set refreshToken equal res.data
+        let refreshToken = res.data;
+        // set refreshToken in cookie
+        this.cookieService.set('refreshToken', refreshToken);
+      });
+    }
   }
 }

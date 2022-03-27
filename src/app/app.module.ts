@@ -10,15 +10,16 @@ import {
   NgbModule,
 } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { FormsModule } from '@angular/forms';
+
 // Api providers
 import { SectionApiService } from './services/sectionApi.service';
 import { ProjectApiService } from './services/projectApi.service';
-
+import { UserApiService } from './services/userApi.service';
 import { AboutComponent } from './components/about/about.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { FooterComponent } from './components/footer/footer.component';
-
-import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,12 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     FormsModule,
   ],
-  providers: [SectionApiService, ProjectApiService],
+  providers: [
+    SectionApiService,
+    ProjectApiService,
+    UserApiService,
+    CookieService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
