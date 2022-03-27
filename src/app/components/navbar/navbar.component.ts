@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { UserApiService } from '../../services/userApi.service';
+import { AuthService } from '../../services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-navbar',
@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   closeResult = '';
   constructor(
     private modalService: NgbModal,
-    private _UserApiService: UserApiService, // private private
+    private _AuthService: AuthService, // private private
     private cookieService: CookieService //   data: String, // }
   ) {}
   user = {} as any;
@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit {
   onSubmit(data: any) {
     // Login with user data and get token
     if (data.email && data.password) {
-      this._UserApiService.login(data).subscribe(async (res: any) => {
+      this._AuthService.proceedLogin(data).subscribe((res: any) => {
         // set refreshToken equal res.data
         let refreshToken = res.data;
         // set refreshToken in cookie
@@ -52,10 +52,10 @@ export class NavbarComponent implements OnInit {
   }
   isLoggedIn() {
     // from AuthService
-    return !!this.cookieService.get('refreshToken');
+    return this._AuthService.IsLoggedIn();
   }
   logOut() {
     // from AuthService
-    this.cookieService.delete('refreshToken');
+    return this._AuthService.logOut();
   }
 }

@@ -5,14 +5,14 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root',
 })
 export class AuthService {
-  apiUrl = 'http://localhost:5500/';
+  apiUrl = 'http://localhost:5500';
   constructor(
     private httpClient: HttpClient,
     private _CookieService: CookieService
   ) {}
 
   proceedLogin(data: any) {
-    return this.httpClient.post(`${this.apiUrl} + users/login`, data);
+    return this.httpClient.post(`${this.apiUrl}/users/login`, data);
   }
 
   IsLoggedIn() {
@@ -20,5 +20,8 @@ export class AuthService {
   }
   GetToken() {
     return this._CookieService.get('refreshToken') || '';
+  }
+  logOut() {
+    this._CookieService.delete('refreshToken');
   }
 }

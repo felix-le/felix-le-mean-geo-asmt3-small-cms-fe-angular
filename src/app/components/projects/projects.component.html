@@ -20,6 +20,18 @@
             >
               {{ project["description"] }}
             </p>
+            <!-- Button -->
+            <div
+              class="d-flex justify-content-between"
+              *ngIf="isLoggedIn() === true"
+            >
+              <button class="btn btn-primary" (click)="onEditProject(project)">
+                Edit
+              </button>
+              <button class="btn btn-danger" (click)="onDeleteProject(project)">
+                Delete
+              </button>
+            </div>
           </div>
         </div>
       </div>
