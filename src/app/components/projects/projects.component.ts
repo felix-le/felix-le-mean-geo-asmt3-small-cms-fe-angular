@@ -32,11 +32,6 @@ export class ProjectsComponent implements OnInit {
     return this._AuthService.IsLoggedIn();
   }
 
-  onDeleteProject(project: any) {
-    // const { name, description, date, client, status, technologies, link } =
-    //   project;
-  }
-
   // Edit Project
   open(formId: any, project: any) {
     this.modalService.open(formId, { ariaLabelledBy: 'editProject' });
@@ -54,5 +49,15 @@ export class ProjectsComponent implements OnInit {
           console.log(error);
         }
       );
+
+    setTimeout(() => this.ngOnInit(), 3000);
+  }
+  onDeleteProject(project: any) {
+    this._projectApiService.deleteProject(project._id).subscribe((res) => {
+      console.log(res);
+      this.lstProjects = this.lstProjects.filter(
+        (p) => p['_id'] !== project._id
+      );
+    });
   }
 }
