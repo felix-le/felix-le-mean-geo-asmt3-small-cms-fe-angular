@@ -12,7 +12,7 @@
           />
           <div class="card-body">
             <h3 class="card-title">{{ project["name"] }}</h3>
-            <h5>{{ project["date"] }}</h5>
+            <h5>{{ project["client"] }}</h5>
             <h6>{{ project["status"] }}</h6>
             <p
               class="card-text text-truncate text-wrap"
@@ -34,12 +34,168 @@
             </div>
           </div>
         </div>
+        <!-- create button -->
+        <button
+          class="col-4"
+          *ngIf="isLoggedIn() === true"
+          style="margin-top: 20px"
+          (click)="openCreate(createContent)"
+          class="btn btn-success"
+        >
+          Create
+        </button>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Login Form  -->
+<ng-template #createContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="createProject">Create Project</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form
+      #createProject="ngForm"
+      (ngSubmit)="onSubmitCreate(createProject.value)"
+    >
+      <div class="form-group">
+        <label for="name"
+          >name project <span class="text-danger">(required)</span></label
+        >
+        <div class="input-group">
+          <input
+            name="name"
+            id="name"
+            type="name"
+            class="form-control"
+            placeholder="project's name"
+            ngModel
+            required
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description"
+          >description project
+          <span class="text-danger">(required)</span></label
+        >
+        <div class="input-group">
+          <input
+            name="description"
+            id="description"
+            type="text"
+            class="form-control"
+            placeholder="project's description"
+            ngModel
+            required
+          />
+        </div>
+      </div>
+      <!-- date, client, status, link inputs -->
+      <div class="form-group">
+        <label for="date">date</label>
+        <div class="input-group">
+          <input
+            name="date"
+            id="date"
+            type="date"
+            class="form-control"
+            placeholder="date"
+            ngModel
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="img">Img Link</label>
+        <div class="input-group">
+          <input
+            name="img"
+            id="img"
+            type="text"
+            class="form-control"
+            placeholder="link"
+            ngModel
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="client"
+          >client <span class="text-danger">(required)</span></label
+        >
+        <div class="input-group">
+          <input
+            name="client"
+            id="client"
+            type="text"
+            class="form-control"
+            placeholder="client"
+            ngModel
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="status"
+          >status<span class="text-danger">(required)</span></label
+        >
+        <div class="input-group">
+          <input
+            name="status"
+            id="status"
+            type="text"
+            class="form-control"
+            placeholder="status"
+            ngModel
+            required
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="link">link</label>
+        <div class="input-group">
+          <input
+            name="link"
+            id="link"
+            type="text"
+            class="form-control"
+            placeholder="link"
+            ngModel
+          />
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-outline-dark"
+          (click)="modal.close('cancel')"
+        >
+          Cancel
+        </button>
+        <div class="border text-center">
+          <button
+            data-dismiss="modal"
+            class="btn btn-info"
+            (click)="modal.close('cancel')"
+            type="submit"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="editProject">Edit Project</h4>
@@ -87,6 +243,19 @@
             placeholder="project's description"
             ngModel
             required
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="img">Img Link</label>
+        <div class="input-group">
+          <input
+            name="img"
+            id="img"
+            type="text"
+            class="form-control"
+            placeholder="link"
+            ngModel
           />
         </div>
       </div>

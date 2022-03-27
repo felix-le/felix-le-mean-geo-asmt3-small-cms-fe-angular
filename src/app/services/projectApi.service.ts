@@ -18,4 +18,8 @@ export class ProjectApiService {
   deleteProject(projectId: any): Observable<any> {
     return this.httpClient.delete(`${baseUrl}/${projectId}/delete`);
   }
+
+  createProject(data: any): Observable<any> {
+    return this.httpClient.post(`${baseUrl}/create`, data);
+  }
 }

@@ -36,21 +36,21 @@ export class ProjectsComponent implements OnInit {
   open(formId: any, project: any) {
     this.modalService.open(formId, { ariaLabelledBy: 'editProject' });
     this.selectedProjectId = project._id;
-    this.onSubmitEdit(project);
   }
+
   onSubmitEdit(data: any) {
     this._projectApiService
       .updateProject(this.selectedProjectId, data)
       .subscribe(
         (response) => {
-          console.log(response);
+          if (response['statusCode'] === 200) {
+            setTimeout(() => this.ngOnInit(), 3000);
+          }
         },
         (error) => {
           console.log(error);
         }
       );
-
-    setTimeout(() => this.ngOnInit(), 3000);
   }
   onDeleteProject(project: any) {
     this._projectApiService.deleteProject(project._id).subscribe((res) => {
@@ -58,6 +58,17 @@ export class ProjectsComponent implements OnInit {
       this.lstProjects = this.lstProjects.filter(
         (p) => p['_id'] !== project._id
       );
+    });
+  }
+  // Create Project
+  openCreate(formId: any) {
+    this.modalService.open(formId, { ariaLabelledBy: 'createProject' });
+  }
+  onSubmitCreate(data: any) {
+    this._projectApiService.createProject(data).subscribe((res) => {
+      if (res['statusCode'] === 200) {
+        setTimeout(() => this.ngOnInit(), 3000);
+      }
     });
   }
 }
