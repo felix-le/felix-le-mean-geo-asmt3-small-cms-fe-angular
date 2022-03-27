@@ -10,12 +10,15 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class NavbarComponent implements OnInit {
   closeResult = '';
+  user = {
+    email: 'rich.freeman@georgiancollege.ca',
+    password: 'youarethebest',
+  } as any;
   constructor(
     private modalService: NgbModal,
     private _AuthService: AuthService, // private private
     private cookieService: CookieService //   data: String, // }
   ) {}
-  user = {} as any;
   ngOnInit(): void {}
   open(content: any) {
     this.modalService

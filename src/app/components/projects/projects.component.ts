@@ -13,6 +13,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ProjectsComponent implements OnInit {
   lstProjects = [];
   closeResult = '';
+  selectedProjectId = '';
   constructor(
     private _projectApiService: ProjectApiService,
     private _AuthService: AuthService,
@@ -32,25 +33,26 @@ export class ProjectsComponent implements OnInit {
   }
 
   onDeleteProject(project: any) {
-    console.log('🚀 ~ ==== onDeleteProject ~ project', project);
+    // const { name, description, date, client, status, technologies, link } =
+    //   project;
+  }
+
+  // Edit Project
+  open(formId: any, project: any) {
+    this.modalService.open(formId, { ariaLabelledBy: 'editProject' });
+    this.selectedProjectId = project._id;
+    this.onSubmitEdit(project);
   }
   onSubmitEdit(data: any) {
-    console.log(data);
-  }
-
-  open(formId: any, data: any) {
-    this.modalService.open(formId, { ariaLabelledBy: 'editProject' });
-
-    this.onSubmitEdit(data);
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
+    this._projectApiService
+      .updateProject(this.selectedProjectId, data)
+      .subscribe(
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 }
