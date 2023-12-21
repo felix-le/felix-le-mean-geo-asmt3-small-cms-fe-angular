@@ -6,9 +6,6 @@ export class UserApiService {
   constructor(private httpClient: HttpClient) {}
 
   login(data: any) {
-    return this.httpClient.post(
-      'https://mean-geo-asmt3-small-cms-be.herokuapp.com/users/login',
-      data
-    );
+    return this.httpClient.post('http://139.177.199.11:5500/users/login', data);
   }
 }

@@ -7,8 +7,6 @@ export class SectionApiService {
   constructor(private httpclient: HttpClient) {}
 
   getSections(): Observable<any> {
-    return this.httpclient.get(
-      'https://mean-geo-asmt3-small-cms-be.herokuapp.com/sections'
-    );
+    return this.httpclient.get('http://139.177.199.11:5500/sections');
   }
 }

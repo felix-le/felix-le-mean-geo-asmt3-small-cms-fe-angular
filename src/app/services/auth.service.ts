@@ -5,7 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root',
 })
 export class AuthService {
-  apiUrl = 'https://mean-geo-asmt3-small-cms-be.herokuapp.com';
+  apiUrl = 'http://139.177.199.11:5500';
   constructor(
     private httpClient: HttpClient,
     private _CookieService: CookieService
